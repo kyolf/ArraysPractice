@@ -136,15 +136,15 @@ class Array {
     }
 }
 
-const array = new Array();
+// const array = new Array();
 
-array.push(5);
-array.push(10);
-array.push(11);
+// array.push(5);
+// array.push(10);
+// array.push(11);
 
-console.log(array);
-console.log(array.get(1));
-console.log(array.insert(1,4));
-console.log(array.get(1));
+// console.log(array);
+// console.log(array.get(1));
+// console.log(array.insert(1,4));
+// console.log(array.get(1));
 
 
