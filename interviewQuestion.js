@@ -63,3 +63,23 @@ function mergeArrays(arr1,arr2){
 }
 console.log(mergeArrays([1,3,5,7,8,9],[2,4,6,8,10]));
 
+function removeCharacters (string,char){
+    //let remove =false;
+    let newString='';
+    for (let i = 0; i <= string.length; i++) {
+       let remove=false;
+        for (let j = 0; j< char.length; j++){
+            if (string.charAt(i) === char.charAt(j)){
+                remove =true;
+            } 
+            
+        }
+        if(remove === false){
+            //remove=false;
+            newString += string.charAt(i);
+        }
+    }
+    return newString;
+}
+console.log(removeCharacters('amojdfj','ajf'));
+
