@@ -79,12 +79,31 @@ class Array {
       this.length++;
     }
 
+    pop(){
+        if(this.length === 0) {
+            throw new Error('Can not pop an empty array!');
+        }
+        const value = memory.get(this.ptr + this.length -1);
+        this.length --;
 
+        return value;
+    }
+
+    get(index){
+        if (index < 0 || index >= this.length){
+            throw new Error ('Index error');
+        }
+        return memory.get(this.ptr + index);
+       
+    }
 }
 
 const array = new Array();
 
-array.push(10);
+array.push(5);
 
+console.log(array);
+console.log(array.get(0));
+console.log(array.pop());
 console.log(array);
 
