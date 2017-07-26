@@ -83,3 +83,16 @@ function removeCharacters (string,char){
 }
 console.log(removeCharacters('amojdfj','ajf'));
 
+function product(arr){
+  let newArr = [];
+  for(let i = 0; i < arr.length; i++){
+    let slicedArr = [...arr.slice(0,i),...arr.slice(i+1)];
+    newArr[i] = 1;
+    for(let j = 0; j< slicedArr.length; j++){
+      newArr[i] = newArr[i] * slicedArr[j];
+    }  
+  }
+  return newArr;
+}
+
+console.log(product([1, 3, 9, 4]));
