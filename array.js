@@ -1,4 +1,48 @@
-import * as memory from './memory.js';
+// import * as memory from './memory.js';
+const memory = (() => {
+  var memory = new Float64Array(1024);
+  var head = 0;
+
+  var allocate = function(size) {
+    if (head + size > memory.length) {
+      return null;
+    }
+    var start = head;
+    head += size;
+    return start;
+  };
+
+  var free = function(ptr) {
+  };
+
+  var copy = function(to, from, size) {
+    if (from === to) {
+      return;
+    }
+    else if (from > to) {
+          // Iterate forwards
+      for (var i=0; i<size; i++) {
+        set(to + i, get(from + i));
+      }
+    }
+    else {
+          // Iterate backwards
+      for (var i=size - 1; i>=0; i--) {
+        set(to + i, get(from + i));
+      }
+    }
+  };
+
+  var get = function(ptr) {
+    return memory[ptr];
+  };
+
+  var set = function(ptr, value) {
+    memory[ptr] = value;
+  };
+  
+  return {allocate, set, get, free, copy};
+})();
 
 class Array {
     //everytime we create a new array object, the initial values are defined here
@@ -26,8 +70,8 @@ class Array {
     push(value){
       //checking if length of the array >= memory size of array
       //if it is, resize the array so you don't go out of memory
-      if(this.length >= sizeOfArray){
-        _resize((this.length+1)*10);
+      if(this.length >= this.sizeOfArray){
+        this._resize((this.length+1)*10);
       }
       //set value to be at the end of the array length
       memory.set(this.ptr+this.length, value);
@@ -37,4 +81,10 @@ class Array {
 
 
 }
+
+const array = new Array();
+
+array.push(10);
+
+console.log(array);
 
